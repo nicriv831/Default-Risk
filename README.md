@@ -90,21 +90,60 @@ I found this trend to be powerful enough that I included this information as an 
 
 #### Previous Applications
 
-While combing the previous application dataset, I noticed that some clients had filled out up to 60 applications. This number
+While combing the previous application dataset, I noticed that some clients had filled out up to 60 applications.
+
+This number seemed quite high, so I decided to take a look at the default rate based on how many previous applications were filled out.
+
+My assumptions for doing so were the same as the Days Credit column - that more applications, especially if they are a lot more than others, might show that someone is fishing for ways to get cash and is getting declined due to lack of creditworthiness
+
+![Default Rate by Previous Applications](Images/DefaultRatebyPrevApps.png)
+
+This also showed a distinct trend that was in line with my hunch - as the number of previous applications increased, so did the default rate in the dataset.
+
+Even more interesing to me was that the default rate for 0-10 applications was just barely beow the entire dataset's average, while every other bin above 10 applications showed a higher default rate than teh entrie dataset's average.
+
+I also chose to use this information as an engineered feature.
 
 ### 3iii - Preprocess Data for Model <a name="preprocess-data-for-model"></a>
+*[Click here](Model_Testing.ipynb) to jump to the notebook containing preprocessing and model testing*
+
+Data was preprocessed according to above outline with the intention of running through a linear regression, decision tree and random forest models.
+
+#### Aggregation Methods/Features Added
+
+* Bureau dataset - aggregated by Days Credit Update - most recent bureau information
+* Bureau Balance dataset - aggreagated by Months Balance - most recent balance info
+* Previous Application dataset - aggregated by Days Decision - most recent credit decision
+* Debt-to-income - added colums dividing monthly annuity payment by monthly income
+* Days Credit - binned days since last credit aplication in increments of 25 days and added column
+* Previous Applications - binned count of previous applications and added column
 
 ### 3iv - Model Analysis/Prediction <a name="model-prediction/analysis"></a>
 
+*[Click here](Final_Model_w_Feature_Selection.ipynb) to jump to the notebook containing only the final model*
+
 I ran the data through three separate model types -- a logistic regression, a decision tree and a random forest.
 
-I tuned the decision tree and random forest to their best deoth. This was because both those models were overfitting without any depth tuning.
+I tuned the decision tree and random forest to their best depth. This was because both those models were overfitting without any depth tuning.
 
 I have a function for the appropriate metrics in my model tuning sheet, the final results were as follows:
 
+![Model Metrics](Images/ModelChart.png)
 
+In this particular case, simple proved to be better as the Logistic Regression with a balanced class returned the highest ROC AUC score.
+
+I ran all these models through the final Kaggle calculator as well. For the logistic regression, I also ran the features through a collinearity feature selection algorithm. 40 columsn were dropped. The score was just a hair lower than the non-feature selected sheet, so I used the full feature sheet as there was not a noticeable tradeoff in comutational efficiency.
+
+In other words, the logistic regression with all the features included had the hgihest score of all 6 models I tested.
+
+#### Final Kaggle ROC AUC for Logistic Regression with All Features  -  0.71175
+#### Final Kaggle ROC AUC for Logistic Regression with All Features  -  0.70936
 
 ## 4 - Next Steps <a name="next-steps"></a>
+
+I think I can imporve the accuracy score, especially because I have more data and spreadsheets I can incorporate.
+
+I would also like to take some more time getting creative with feature engineering. With this much data there are all kinds of different ways we can chop the data up to reveal more information.
 
 ## References <a name="references"></a>
 
