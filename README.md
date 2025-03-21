@@ -8,6 +8,9 @@ Include statsitics from mortgage bankers association
 
 Raw files and cleaned train/test sets are too large for github. Use link to Kaggle to provide raw data that will lead to cleaned data
 
+DAys credit
+Outline that bins above 250 are all less than the averag default rate so theyve been binend togtehr
+
 My client's business does home loans for the unbanked. They collect a variety of traditional and non-traditional data that they use to make their approval decisions. They're looking to ensure the prospective borrowers with the best capability to repay are approved.
 
 The population the client caters to are underserved in the financial world, and our client's goal is to help that undersevred population have access to resources they may not normally have access to. They also want to ensure loans are setup in a way that decreases the chance of a default.
