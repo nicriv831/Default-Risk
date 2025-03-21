@@ -76,9 +76,33 @@ I first chose to bin the days credit column in 25 day increments:
 
 ![Default Rate by Days Since Last Application](Images/DefaultbyCreditApp.png)
 
+In line with my assumption, there was a trend toward higher default rates as the days since last credit application rose. What I found intersting was that the only section that had a higher default rate than the average for the whole set was 0-250 days since the last application.
+
+I then chose to take another look, but this time break out 250 days and under in 25 day increments
+
+![Default Rate by Days Since Last Application - 250 and less](Images/DefaultByCreditApp250.png)
+
+This chart proved to show a similar distinct trend in this sample -- as applications for other credit crept closer to the loan application, the default rate went up.
+
+There was a difference between the first chart looking at all Days Credit and this one breakingo ut 250 days and under. The default rate was above the full dataset's average (8.07%) for all increments under 250 days with the exception of 226-250.
+
+I found this trend to be powerful enough that I included this information as an engineered feature for the model
+
+#### Previous Applications
+
+While combing the previous application dataset, I noticed that some clients had filled out up to 60 applications. This number
+
 ### 3iii - Preprocess Data for Model <a name="preprocess-data-for-model"></a>
 
 ### 3iv - Model Analysis/Prediction <a name="model-prediction/analysis"></a>
+
+I ran the data through three separate model types -- a logistic regression, a decision tree and a random forest.
+
+I tuned the decision tree and random forest to their best deoth. This was because both those models were overfitting without any depth tuning.
+
+I have a function for the appropriate metrics in my model tuning sheet, the final results were as follows:
+
+
 
 ## 4 - Next Steps <a name="next-steps"></a>
 
@@ -87,11 +111,6 @@ I first chose to bin the days credit column in 25 day increments:
 _Foreclosure Image_ - <a href="https://commons.wikimedia.org/wiki/File:Foreclosure_sign.jpeg">Casey Serin</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons
 
 [^1]: <a href="https://www.mba.org/news-and-research/newsroom/news/2025/02/06/mortgage-delinquencies-increase-in-the-fourth-quarter-of-2024">Mortgage Bankers Association</a>
-
-
-
-DAys credit
-Outline that bins above 250 are all less than the averag default rate so theyve been binend togtehr
 
 
 
